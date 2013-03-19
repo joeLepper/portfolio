@@ -1,0 +1,16 @@
+extends blogroot
+
+block mainContent
+  - for(var key in vars)
+    - if (key < page * 10 && key >= (page-1)*10)
+      div.post_container
+        h2.post_title.post
+          a(href=vars[key].postLink)= vars[key].title
+        p.post_date.post= vars[key].date
+        p.post_content.post!= vars[key].content
+  - if (vars.length > page * 10)
+    div.old_link_div
+      a(href=page+1, id='older_link') Older
+  - if (page - 1 != 0)
+    div.new_link_div
+      a(href=page-1, id='newer_link') Newer

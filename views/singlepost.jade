@@ -1,0 +1,9 @@
+extends blogroot
+block styleSheet
+  link(rel='stylesheet', href='../../style/blog_style.css')
+
+block mainContent
+  div.post_container
+    h2.post_title.post= vars.title
+    p.post_date.post= vars.date
+    p.post_content.post= vars.content

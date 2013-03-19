@@ -1,0 +1,18 @@
+extends layout
+block styleSheet
+  link(rel='stylesheet', href='../style/blog_style.css')
+
+block mainContentDiv
+  h2 Write a new blog post.
+  form(method='post', action='/blog/show')
+    ul.no_list
+      li
+        label(for='title') Title:
+      li
+        input(type='text', name='title')
+      li
+        label(for='content') Content:
+      li
+        textarea(name='content', rows='40', cols='100')
+      li
+        input(type='submit', value='Submit')

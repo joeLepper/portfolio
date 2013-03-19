@@ -1,0 +1,23 @@
+doctype 5
+html
+  head
+  body
+    #message
+      -for (var key in vars)
+        p= vars.error    
+    form(action='/verifycreate', method='post')
+      #user
+        label Username:
+        input(type='text', name='username')
+      #email
+        label Email:
+        input(type='text',name='email')
+      #pass
+        label Password:
+        input(type='password', name='password')
+      #repass
+        label Re-enter Password:
+        input(type='password', name='repassword')
+      #submit
+        input(type='submit', value='Log In')
+

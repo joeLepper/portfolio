@@ -1,0 +1,59 @@
+extends layout
+block styleSheet
+  link(rel='stylesheet', href='style/front_style.css')
+
+block mainDiv
+  div.nav_container
+    h2#main_title Joe Lepper: 
+    p#subtitle Doing Stuff on the Internet
+    ul#nav_bar.no_list
+      li.nav_item
+        a.accordion(href='#') ABOUT
+        div.hide
+          p 
+            a(href='#', id='bio',class='section_link', name='section_link') bio
+          p
+            a(href='#', id='contact',class='section_link', name='section_link') contact
+          p
+            a(href='#', id='site',class='section_link', name='section_link') site
+      li.nav_item
+        a.accordion(href='#') INTERACTIVE
+        div.hide
+          p 
+            a(href='#', id='stepSync',class='section_link', name='section_link') step sync
+          p
+            a(href='#', id='amenBreaker',class='section_link', name='section_link') amen breaker
+      li.nav_item
+        a.accordion(href='#') AUDIO
+        div.hide
+          p 
+            a(href='#', id='soundCloud',class='section_link', name='section_link') original compositions
+          p
+            a(href='#', id='refixes',class='section_link', name='section_link') vocal refixes
+      li.nav_item
+        a(href='/blog') BLOG
+        
+block mainContentDiv
+  #content_container
+    - for(var section in vars)
+      div.content_wrapper(name=vars[section].section)
+        div(id=vars[section].section,class='content_holder')  
+          h2= vars[section].head
+          - if (vars[section].img != null)
+            a(href=vars[section].img.a)
+              img(src=vars[section].img.src, alt=vars[section].img.alt, width=vars[section].img.width, height=vars[section].img.height)
+          -if(vars[section].content != null)
+            - for(var graph in vars[section].content)
+              p.content_paragraphs=vars[section].content[graph]
+          -else
+            - for(var link in vars[section].linkContent)
+              a(href=vars[section].linkContent[link].href)
+                p=vars[section].linkContent[link].p
+          - if(vars[section].audio!=null)
+            - for(var track in vars[section].audio)
+              iframe(src=vars[section].audio[track], width='100%', height='125', scrolling='no')
+          
+
+  script(type="text/javascript", src="js/accordion.js")
+  script(type="text/javascript", src="js/jquery.easing.1.3.js")
+  script(type='text/javascript', src='js/main.js')
